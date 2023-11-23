@@ -1,16 +1,21 @@
 import React ,{useState} from "react";
 import { FaMinusCircle,  FaPlusCircle } from "react-icons/fa";
 
-function Question() {
+function Question({title, info}) {
     const [showInfo, setShowInfo] = useState(false);
   return (
-    <div className="question">
+    <div className="question" onClick={ () => setShowInfo(!showInfo)} >
+
       <header>
-        <h4>HI</h4>
-        <button onClick={ () => setShowInfo(!showInfo)}>< FaPlusCircle/></button>
+        <h4>{title}</h4>
+        <button onClick={ () => setShowInfo(!showInfo)}>
+            {
+                showInfo ? < FaMinusCircle/> : <FaPlusCircle />
+            }
+        </button>
       </header>
       {
-        showInfo && <p>skjhfgkjsdh</p>
+        showInfo && <p>{info}</p>
       }
     </div>
   );
